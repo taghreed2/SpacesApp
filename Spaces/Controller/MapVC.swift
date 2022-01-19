@@ -9,18 +9,10 @@ import UIKit
 import Firebase
 import MapKit
 
-// move to model....
-struct Coor {
-    let latitude:Double?
-    let longitude:Double?
-    
-}
-//....
-
-
 class MapVC: UIViewController , MKMapViewDelegate {
     
     @IBOutlet weak var Cmap: MKMapView!
+    
     var coorArr = [Coor]()
     var latitude:Double?
     var longitude:Double?
@@ -29,16 +21,13 @@ class MapVC: UIViewController , MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Cmap.delegate = self
         
-        readSubcollectionDocs()
-        // Do any additional setup after loading the view.
+        Cmap.delegate = self
+        loadSpaces()
+
     }
     
-    
-    
-    
-    func readSubcollectionDocs(){
+    func loadSpaces(){
         db.collection("Host").getDocuments()
         { (querySnapshot, err) in
             if let err = err {
@@ -76,33 +65,23 @@ class MapVC: UIViewController , MKMapViewDelegate {
     }
     
     
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView)
-    {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView){
+        
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "NewRequestVCid") as! NewRequestVC
         vc.modalPresentationStyle = .fullScreen
         if let annotationcoordinate = view.annotation?.coordinate
+            
         {
-            // annotationcoordinate change it from CLLocationCoordinate2D(latitude: 51.50998, longitude: -0.1337) to lat and long
             vc.coordinate = "\(annotationcoordinate)"
             print("\(annotationcoordinate)")
             print(vc.coordinate!)
         }
+        
         present(vc, animated: true, completion: nil)
+        
     }
     
     
-    
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
 

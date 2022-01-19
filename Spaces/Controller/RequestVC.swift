@@ -8,17 +8,11 @@
 import UIKit
 import Firebase
 
-// move ...
-struct HostRequest {
-    let customerName: String
-    let customerNum: String
-    let customerID : String
-    
-}
-//...
 
 
 class RequestVC: UIViewController {
+    
+    @IBOutlet weak var tv: UITableView!
     
     let refreshControl : UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -26,25 +20,18 @@ class RequestVC: UIViewController {
         refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
         return refreshControl
     }()
-   
-    
-    
-    
     let db = Firestore.firestore()
     var HostRequestArr = [HostRequest]()
     
-    @IBOutlet weak var tv: UITableView!
-    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         readSubcollectionDocs()
         tv.addSubview(refreshControl)
-        // Do any additional setup after loading the view.
+        
     }
     
-    
-    
-    
+    //MARK: Functions
     @objc func refresh(_ sender: AnyObject) {
         HostRequestArr.removeAll()
         readSubcollectionDocs()
@@ -80,33 +67,10 @@ class RequestVC: UIViewController {
         }
         
     }
-    }
+ }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
-extension RequestVC : UITableViewDelegate ,UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return HostRequestArr.count
-        
-    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tv.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HostRequestCell
-        cell.customerName.text = HostRequestArr[indexPath.row].customerName
-        cell.customerNum.text = HostRequestArr[indexPath.row].customerNum
-        cell.customerID = HostRequestArr[indexPath.row].customerID
-       
-        return cell
-    }
-    
+ 
     
 }
+

@@ -17,34 +17,33 @@ class NewRequestVC: UIViewController {
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var customerList: UITextView!
     
-    
     let db = Firestore.firestore()
     var coordinate : String?
     var customerName : String?
     var customerNum : String?
     var HostID : String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(coordinate!)
-        readSubcollectionDocs()//readHostInfo
+        
+        readHostInfo()
         readCustomerInfo()
-    
         hideKeyboard(view: view)
         roundCorners2(view: hostInfoView)
+        
     }
     
-    
-    
-    
-    
+   //MARK: @IBAction
     
     @IBAction func newRec(_ sender: Any) {
         addNewRequestData()
     }
     
-    func readSubcollectionDocs(){
-        db.collection("Host").getDocuments()
+    //MARK: @IBAction
+
+    func readHostInfo(){
         
+        db.collection("Host").getDocuments()
         { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -67,17 +66,13 @@ class NewRequestVC: UIViewController {
                     }
                 }
             }
-            
         }
-        
     }
     
-
-    
     func addNewRequestData() {
+        
        db.collection("Customer").document("\(Auth.auth().currentUser!.uid)").collection("NewRequest").document("\(HostID!)").setData(
             [
-                
             "customerName":customerName,
             "customerNum":customerNum,
             "customerID":Auth.auth().currentUser!.uid,
@@ -98,14 +93,13 @@ class NewRequestVC: UIViewController {
         }
     }
     
-    
    func readCustomerInfo(){
+       
         let docRef = db.collection("Customer").document("\(Auth.auth().currentUser!.uid)")
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 self.customerName = document.get("name") as! String
                 self.customerNum = document.get("phoneNumber") as! String
-                
                 
             } else {
                 print("Document does not exist")
@@ -115,15 +109,5 @@ class NewRequestVC: UIViewController {
     
     
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+
 }

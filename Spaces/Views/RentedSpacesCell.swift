@@ -8,9 +8,9 @@
 import UIKit
 
 class RentedSpacesCell: UITableViewCell {
+    
     @IBOutlet weak var customerName: UILabel!
     @IBOutlet weak var customerNum: UILabel!
     @IBOutlet weak var state: UILabel!
     
-    
-}
+ }

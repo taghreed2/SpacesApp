@@ -12,6 +12,5 @@ class CustomerRequestCell: UITableViewCell {
     @IBOutlet weak var hostName: UILabel!
     @IBOutlet weak var hostNum: UILabel!
     @IBOutlet weak var state: UILabel!
-    
-
+ 
 }
