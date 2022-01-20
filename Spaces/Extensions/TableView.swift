@@ -4,7 +4,6 @@
 //
 //  Created by TAGHREED on 16/06/1443 AH.
 //
-//.....alert......
 
 import Foundation
 import UIKit

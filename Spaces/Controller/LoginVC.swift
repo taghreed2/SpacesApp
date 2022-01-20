@@ -10,7 +10,7 @@ import Firebase
 
 class LoginVC: UIViewController {
     
-    @IBOutlet weak var subview: UIView!
+   
     @IBOutlet weak var pass: UITextField!
     @IBOutlet weak var email: UITextField!
     
@@ -19,7 +19,7 @@ class LoginVC: UIViewController {
         
         check()
         hideKeyboard(view: view)
-        roundCorners(view: subview)
+        
         
     }
     
@@ -36,8 +36,9 @@ class LoginVC: UIViewController {
         
         if Auth.auth().currentUser?.uid != nil {
             DispatchQueue.main.async(){
-                self.performSegue(withIdentifier: "toStartVC", sender: self)
-            }
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "StartVCid") as! StartVC
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: false, completion: nil)            }
         }else{
             print("please login")
         }
@@ -49,9 +50,13 @@ class LoginVC: UIViewController {
             Auth.auth().signIn(withEmail: email.text!, password: pass.text!) { user, error in
                 if error == nil {
                     print("log in")
-                    self.performSegue(withIdentifier: "toStartVC", sender: self)
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "StartVCid") as! StartVC
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: false, completion: nil)
                 }else{
-                    print(error!)
+                    let alert = UIAlertController(title: "خطأ!", message: "\(error!.localizedDescription)", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "حسناً", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
         }else{

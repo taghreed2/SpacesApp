@@ -85,7 +85,7 @@ class CustomerProfileVC: UIViewController  {
     
     func readNewRequestData(){
         
-        self.db.collection("Customer").document("\(Auth.auth().currentUser!.uid)").collection("NewRequest").getDocuments {  (querySnapshot, err) in
+        self.db.collection("Customer").document("\(Auth.auth().currentUser!.uid)").collection("NewRequest").getDocuments { [self] (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -99,22 +99,9 @@ class CustomerProfileVC: UIViewController  {
             
         }
     }
+
     
-    
-    
-    
-    
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     
 }
 

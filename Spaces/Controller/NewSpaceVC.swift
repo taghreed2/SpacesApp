@@ -4,7 +4,6 @@
 //
 //  Created by TAGHREED on 29/05/1443 AH.
 
-//fix....
 
 import UIKit
 import Firebase
@@ -12,7 +11,6 @@ import CoreLocation
 
 class NewSpaceVC: UIViewController, CLLocationManagerDelegate {
     
-    @IBOutlet weak var subview0: UIView!
     @IBOutlet weak var subview: UIView!
     @IBOutlet weak var duration: UITextField!
     @IBOutlet weak var desc: UITextView!
@@ -28,14 +26,13 @@ class NewSpaceVC: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        readHostDocsDsta()
+        readHostInfo()
         locationManager = CLLocationManager()
         locationManager.delegate = self;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         hideKeyboard(view: view)
-        roundCorners(view: subview0)
         roundCorners(view: subview)
         
     }
@@ -83,7 +80,7 @@ class NewSpaceVC: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func readHostDocsDsta(){
+    func readHostInfo() {
         
         let docRef = db.collection("Host").document("\(Auth.auth().currentUser!.uid)")
         docRef.getDocument { (document, error) in

@@ -31,7 +31,7 @@ class HostProfileVC: UIViewController {
         RentedSpacesInfo()
         tv.addSubview(refreshControl)
         roundCorners2(view: tv)
-        roundCorners2(view: subview)
+        roundCorners(view: subview)
         
     }
     
@@ -94,7 +94,7 @@ class HostProfileVC: UIViewController {
             } else {
                 
                 for doc in querySnapshot!.documents {
-                    db.collection("Customer").document("\(doc.documentID)").collection("NewRequest").document("\(Auth.auth().currentUser!.uid)").getDocument(completion: { (document, error) in
+                    db.collection("Customer").document("\(doc.documentID)").collection("NewRequest").document("\(Auth.auth().currentUser!.uid)").getDocument(completion: { [self] (document, error) in
                         if let document = document, document.exists {
                             if document.get("state") as! String == "تم القبول" {
                                 

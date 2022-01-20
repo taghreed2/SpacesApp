@@ -30,7 +30,7 @@ class MapVC: UIViewController , MKMapViewDelegate {
     
     func loadSpaces(){
         db.collection("Host").getDocuments()
-        { (querySnapshot, err) in
+        { [self] (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {

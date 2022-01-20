@@ -9,7 +9,6 @@ import UIKit
 import Firebase
 class NewRequestVC: UIViewController {
     
-    @IBOutlet weak var subview: UIView!
     @IBOutlet weak var hostInfoView: UIView!
     @IBOutlet weak var hostName: UILabel!
     @IBOutlet weak var hostNum: UILabel!
@@ -30,7 +29,6 @@ class NewRequestVC: UIViewController {
         readHostInfo()
         readCustomerInfo()
         hideKeyboard(view: view)
-        roundCorners(view: subview)
         roundCorners2(view: hostInfoView)
         
     }

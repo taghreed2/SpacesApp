@@ -41,7 +41,7 @@ class RequestVC: UIViewController {
     
     
     func readSubcollectionDocs(){
-        db.collection("Customer").getDocuments(){ (querySnapshot, err) in
+        db.collection("Customer").getDocuments(){ [self] (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {

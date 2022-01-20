@@ -9,7 +9,6 @@ import UIKit
 import Firebase
 class SignUpVC: UIViewController {
     
-    @IBOutlet weak var subview: UIView!
     @IBOutlet weak var createbtn: UIButton!
     @IBOutlet weak var hostSwitch: UISwitch!
     @IBOutlet weak var pass: UITextField!
@@ -22,7 +21,6 @@ class SignUpVC: UIViewController {
         
         hostSwitch.isOn = false
         hideKeyboard(view: view)
-        roundCorners(view: subview)
         
     }
     
@@ -49,10 +47,13 @@ class SignUpVC: UIViewController {
                     }
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "StartVCid") as! StartVC
                     vc.modalPresentationStyle = .fullScreen
-                    self.present(vc, animated: true, completion: nil)
+                    self.present(vc, animated: false, completion: nil)
                     
                 }else{
-                    print(error!)
+                    
+                    let alert = UIAlertController(title: "خطأ!", message: "\(error!.localizedDescription)", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "حسناً", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
             
