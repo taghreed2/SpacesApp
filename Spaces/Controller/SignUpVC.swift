@@ -52,7 +52,7 @@ class SignUpVC: UIViewController {
                     self.present(vc, animated: true, completion: nil)
                     
                 }else{
-                    print(error)
+                    print(error!)
                 }
             }
             
@@ -70,10 +70,10 @@ class SignUpVC: UIViewController {
     func addHostData() {
         
         db.collection("Host").document("\(Auth.auth().currentUser!.uid)").setData([
-            "name": name.text,
-            "phoneNumber": phoneNumber.text,
+            "name": name.text ?? "name",
+            "phoneNumber": phoneNumber.text ?? "phoneNumber",
             "NewSpace": "***",
-            "id": Auth.auth().currentUser?.uid
+            "id": Auth.auth().currentUser!.uid
         ]){ err in
             if let err = err {
                 print("Error adding document: \(err)")
@@ -86,10 +86,10 @@ class SignUpVC: UIViewController {
     func addCustomerData() {
         
         db.collection("Customer").document("\(Auth.auth().currentUser!.uid)").setData([
-            "name": name.text,
-            "phoneNumber": phoneNumber.text,
+            "name": name.text ?? "no name",
+            "phoneNumber": phoneNumber.text ?? "no phoneNumber",
             "request": "***",
-            "id": Auth.auth().currentUser?.uid
+            "id": Auth.auth().currentUser?.uid ?? "no id"
         ]){ err in
             if let err = err {
                 print("Error adding document: \(err)")

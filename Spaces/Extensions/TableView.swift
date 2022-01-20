@@ -4,6 +4,7 @@
 //
 //  Created by TAGHREED on 16/06/1443 AH.
 //
+//.....alert......
 
 import Foundation
 import UIKit
@@ -39,7 +40,8 @@ extension RequestVC : UITableViewDelegate ,UITableViewDataSource{
         cell.customerName.text = HostRequestArr[indexPath.row].customerName
         cell.customerNum.text = HostRequestArr[indexPath.row].customerNum
         cell.customerID = HostRequestArr[indexPath.row].customerID
-       
+        roundCorners2(view: cell.contentView)
+        cell.backgroundColor = UIColor(named: "bgColor2")
         return cell
     }
     

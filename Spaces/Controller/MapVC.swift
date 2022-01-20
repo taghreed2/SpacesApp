@@ -18,14 +18,15 @@ class MapVC: UIViewController , MKMapViewDelegate {
     var longitude:Double?
     let db = Firestore.firestore()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         Cmap.delegate = self
         loadSpaces()
 
     }
+    
+    //MARK: Functions
     
     func loadSpaces(){
         db.collection("Host").getDocuments()

@@ -51,7 +51,7 @@ class LoginVC: UIViewController {
                     print("log in")
                     self.performSegue(withIdentifier: "toStartVC", sender: self)
                 }else{
-                    print(error)
+                    print(error!)
                 }
             }
         }else{

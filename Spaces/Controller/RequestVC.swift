@@ -41,9 +41,7 @@ class RequestVC: UIViewController {
     
     
     func readSubcollectionDocs(){
-        db.collection("Customer").getDocuments()
-        
-        { (querySnapshot, err) in
+        db.collection("Customer").getDocuments(){ (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -55,7 +53,7 @@ class RequestVC: UIViewController {
                         } else {
                             for doc in querySnapshot!.documents {
                                 if (doc.get("HostID")as? String ?? "nil") == Auth.auth().currentUser?.uid && doc.get("state") as! String != "تم القبول" &&  doc.get("state") as! String != "تم الرفض" {
-                                    self.HostRequestArr.append(HostRequest(customerName: doc.get("customerName") as! String ?? "no customerName", customerNum: doc.get("customerNum") as! String ?? "customerNum", customerID: doc.get("customerID") as! String ?? "no customerName" ))
+                                    self.HostRequestArr.append(HostRequest(customerName: doc.get("customerName") as? String ?? "no customerName", customerNum: doc.get("customerNum") as? String ?? "customerNum", customerID: doc.get("customerID") as? String ?? "no customerName" ))
                                     self.tv.reloadData()
                             }
                         }

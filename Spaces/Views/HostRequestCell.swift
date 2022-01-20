@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 class HostRequestCell: UITableViewCell {
+    
+    
     @IBOutlet weak var customerName: UILabel!
     @IBOutlet weak var customerNum: UILabel!
     @IBOutlet weak var declineBtn: UIButton!
@@ -23,9 +25,7 @@ class HostRequestCell: UITableViewCell {
         
         db.collection("Customer").document(customerID).collection("NewRequest").document(Auth.auth().currentUser!.uid).updateData([
                 "state" : "تم القبول"
-            ])
-
-        { err in
+            ]){ err in
             if let err = err {
                 print("Error updating document: \(err)")
             } else {
@@ -40,9 +40,7 @@ class HostRequestCell: UITableViewCell {
         accBtn.isEnabled = false
         db.collection("Customer").document(customerID).collection("NewRequest").document(Auth.auth().currentUser!.uid).updateData([
                 "state" : "تم الرفض"
-            ])
-
-        { err in
+            ]){ err in
             if let err = err {
                 print("Error updating document: \(err)")
             } else {

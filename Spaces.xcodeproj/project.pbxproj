@@ -130,6 +130,7 @@
 				887A04572780FDEE00419BCD /* Main.storyboard */,
 				88D872BA2791DE0800889E78 /* CustomerRequestCell.swift */,
 				88D872BE2794828800889E78 /* RentedSpacesCell.swift */,
+				88D872BC2791F29000889E78 /* HostRequestCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -162,7 +163,6 @@
 				887A04652781840200419BCD /* HostProfileVC.swift */,
 				887A04692781846400419BCD /* RequestVC.swift */,
 				887A04672781844200419BCD /* NewSpaceVC.swift */,
-				88D872BC2791F29000889E78 /* HostRequestCell.swift */,
 				887A046D278184ED00419BCD /* MapVC.swift */,
 				887A04712781856000419BCD /* SignUpVC.swift */,
 				887A04732781857800419BCD /* LoginVC.swift */,

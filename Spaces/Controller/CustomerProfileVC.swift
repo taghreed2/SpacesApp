@@ -5,8 +5,6 @@
 //  Created by TAGHREED on 29/05/1443 AH.
 //
 
-//.....alert......
-
 import UIKit
 import Firebase
 import SwiftUI

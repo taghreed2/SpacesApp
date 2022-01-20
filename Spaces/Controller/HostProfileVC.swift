@@ -62,8 +62,8 @@ class HostProfileVC: UIViewController {
         let docRef = db.collection("Host").document("\(Auth.auth().currentUser!.uid)")
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
-                self.name.text = document.get("name") as! String
-                self.phoneNum.text = document.get("phoneNumber") as! String
+                self.name.text = document.get("name") as? String
+                self.phoneNum.text = document.get("phoneNumber") as? String
                 
                 
             } else {
@@ -88,9 +88,7 @@ class HostProfileVC: UIViewController {
     
     func RentedSpacesInfo(){
         
-        db.collection("Customer").getDocuments()
-        
-        { (querySnapshot, err) in
+        db.collection("Customer").getDocuments(){ (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {

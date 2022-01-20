@@ -12,6 +12,7 @@ import CoreLocation
 
 class NewSpaceVC: UIViewController, CLLocationManagerDelegate {
     
+    @IBOutlet weak var subview0: UIView!
     @IBOutlet weak var subview: UIView!
     @IBOutlet weak var duration: UITextField!
     @IBOutlet weak var desc: UITextView!
@@ -34,6 +35,7 @@ class NewSpaceVC: UIViewController, CLLocationManagerDelegate {
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         hideKeyboard(view: view)
+        roundCorners(view: subview0)
         roundCorners(view: subview)
         
     }
@@ -61,14 +63,14 @@ class NewSpaceVC: UIViewController, CLLocationManagerDelegate {
         
         db.collection("Host").document("\(Auth.auth().currentUser!.uid)").collection("NewSpace").document("CLLocationCoordinate2D(latitude: \(latitude!), longitude: \(longitude!))").setData(
             [
-                "desc": desc.text,
-                "duration": duration.text,
-                "price": price.text,
-                "latitude": latitude,
-                "longitude":longitude,
+                "desc": desc.text ?? "لا يوجد وصف",
+                "duration": duration.text ?? "المدة غيد محددة",
+                "price": price.text ?? "السعر غير محدد",
+                "latitude": latitude ?? "",
+                "longitude":longitude ?? "",
                 "HostName":HostName,
                 "HostNum":HostNum,
-                "HostID": Auth.auth().currentUser?.uid
+                "HostID": Auth.auth().currentUser?.uid ?? ""
             ]
         )
         { err in

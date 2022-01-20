@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 class NewRequestVC: UIViewController {
     
+    @IBOutlet weak var subview: UIView!
     @IBOutlet weak var hostInfoView: UIView!
     @IBOutlet weak var hostName: UILabel!
     @IBOutlet weak var hostNum: UILabel!
@@ -29,18 +30,19 @@ class NewRequestVC: UIViewController {
         readHostInfo()
         readCustomerInfo()
         hideKeyboard(view: view)
+        roundCorners(view: subview)
         roundCorners2(view: hostInfoView)
         
     }
     
-   //MARK: @IBAction
+    //MARK: @IBAction
     
     @IBAction func newRec(_ sender: Any) {
         addNewRequestData()
     }
     
     //MARK: @IBAction
-
+    
     func readHostInfo(){
         
         db.collection("Host").getDocuments()
@@ -52,7 +54,7 @@ class NewRequestVC: UIViewController {
                     
                     self.db.collection("Host").document("\(doc.documentID)").collection("NewSpace").document(self.coordinate!).getDocument { documentSnapshot , err in
                         if let doc = documentSnapshot , doc.exists {
-                        
+                            
                             self.hostName.text = doc.get("HostName") as? String ?? "no HostName"
                             self.desc.text = doc.get("desc") as? String ?? "no desc"
                             self.price.text = doc.get("price") as? String ?? "no price"
@@ -71,16 +73,16 @@ class NewRequestVC: UIViewController {
     
     func addNewRequestData() {
         
-       db.collection("Customer").document("\(Auth.auth().currentUser!.uid)").collection("NewRequest").document("\(HostID!)").setData(
+        db.collection("Customer").document("\(Auth.auth().currentUser!.uid)").collection("NewRequest").document("\(HostID!)").setData(
             [
-            "customerName":customerName,
-            "customerNum":customerNum,
-            "customerID":Auth.auth().currentUser!.uid,
-            "customerList": customerList.text,
-            "state":"انتظار",
-            "HostID" : HostID,
-            "HostName" : hostName.text,
-            "hostNum" : hostNum.text,
+                "customerName":customerName ?? "customerName",
+                "customerNum":customerNum ?? "customerNum",
+                "customerID":Auth.auth().currentUser!.uid,
+                "customerList":customerList.text ?? "customerList",
+                "state":"انتظار",
+                "HostID" :HostID ?? "HostID" ,
+                "HostName":hostName.text ?? "HostName",
+                "hostNum":hostNum.text ?? "hostNum" ,
             ]
         )
         { err in
@@ -93,13 +95,13 @@ class NewRequestVC: UIViewController {
         }
     }
     
-   func readCustomerInfo(){
-       
+    func readCustomerInfo(){
+        
         let docRef = db.collection("Customer").document("\(Auth.auth().currentUser!.uid)")
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
-                self.customerName = document.get("name") as! String
-                self.customerNum = document.get("phoneNumber") as! String
+                self.customerName = document.get("name") as? String
+                self.customerNum = document.get("phoneNumber") as? String
                 
             } else {
                 print("Document does not exist")
@@ -109,5 +111,5 @@ class NewRequestVC: UIViewController {
     
     
     
-
+    
 }

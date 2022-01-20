@@ -7,6 +7,7 @@
 
 import Foundation
 struct RentedSpace {
+    
     let customerName : String
     let customerNum : String
     let state : String
