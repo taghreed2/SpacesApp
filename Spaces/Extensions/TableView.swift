@@ -80,9 +80,10 @@ extension CustomerProfileVC : UITableViewDelegate ,UITableViewDataSource{
                     }
                 }
             
-            }else{
-                print("you cant delet")
-                // alert
+            }else if customerRequest.state == "تم القبول"  {
+                let alert = UIAlertController(title: "خطأ", message: "تم قبول الطلب لايمكنك التراجع", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "حسناً", style: .default, handler: nil))
+                present(alert, animated: true, completion: nil)
             }
         }
     }

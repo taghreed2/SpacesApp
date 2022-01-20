@@ -58,8 +58,8 @@ class SignUpVC: UIViewController {
             
         }else{
             
-            let alert = UIAlertController(title: "missing information", message: "Please enter email and password", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            let alert = UIAlertController(title: "معلومات مفقودة", message: "الرجاء ادخال البريد الإلكتروني وكلمة المرور", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "حسناً", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
             
         }

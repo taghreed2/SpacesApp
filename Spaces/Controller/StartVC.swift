@@ -45,7 +45,7 @@ class StartVC: UIViewController {
         hostRef.getDocument { (document, error) in
             if let document = document {
                 if document.exists {
-                  //  print("Document data: \(document.data())")
+                
                     self.performSegue(withIdentifier: "hostseg", sender: nil)
                 } else {
                     print("Document does not exist")
@@ -57,12 +57,7 @@ class StartVC: UIViewController {
     
    
     
-    @IBAction func customerSignUp(_ sender: Any) {
-        
-    }
-    @IBAction func HostSignUp(_ sender: Any) {
-        
-    }
+    
     
     /*
      // MARK: - Navigation

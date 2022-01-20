@@ -17,26 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygU-OU-uTV">
-                                <rect key="frame" x="264" y="531" width="117" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="باحث عن مساحة"/>
-                                <connections>
-                                    <action selector="customerSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YGE-sZ-0ny"/>
-                                    <segue destination="fc8-jS-dZx" kind="show" identifier="customerseg" id="cBU-OH-BAC"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGH-C2-Oe4">
-                                <rect key="frame" x="58" y="531" width="117" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="مضيف"/>
-                                <connections>
-                                    <action selector="HostSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LSR-fl-VRx"/>
-                                    <segue destination="lQu-U2-7VA" kind="show" identifier="hostseg" id="AcI-F3-S81"/>
-                                </connections>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="img" translatesAutoresizingMaskIntoConstraints="NO" id="ZWC-Mc-65c">
                                 <rect key="frame" x="-233" y="2" width="880" height="892"/>
                             </imageView>
@@ -50,8 +30,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="X4A-Xo-KuD"/>
                     <connections>
-                        <outlet property="cutomerButton" destination="ygU-OU-uTV" id="qce-0y-fY4"/>
-                        <outlet property="hostButton" destination="eGH-C2-Oe4" id="ZCL-1C-kNT"/>
+                        <segue destination="lQu-U2-7VA" kind="show" identifier="hostseg" id="UBJ-46-18p"/>
+                        <segue destination="fc8-jS-dZx" kind="show" identifier="customerseg" id="cAR-Sj-Ow1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -81,10 +61,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="img" translatesAutoresizingMaskIntoConstraints="NO" id="yEa-mb-7Ni">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" image="img" translatesAutoresizingMaskIntoConstraints="NO" id="yEa-mb-7Ni">
                                 <rect key="frame" x="-233" y="0.0" width="880" height="759"/>
                             </imageView>
-                            <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m35-8Z-Ksy">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m35-8Z-Ksy">
                                 <rect key="frame" x="20" y="75" width="374" height="130"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="HBs-Gd-3LW">
@@ -274,7 +254,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ptN-zu-Fgr">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ptN-zu-Fgr">
                                 <rect key="frame" x="20" y="100" width="374" height="659"/>
                                 <color key="backgroundColor" name="bgColor2"/>
                                 <prototypes>
@@ -813,7 +793,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="img" translatesAutoresizingMaskIntoConstraints="NO" id="CPy-ad-bPb">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" image="img" translatesAutoresizingMaskIntoConstraints="NO" id="CPy-ad-bPb">
                                 <rect key="frame" x="-233" y="0.0" width="880" height="842"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eMZ-TG-Obl">
@@ -1092,7 +1072,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="قائمة المحتويات:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TN9-7F-6gs">
                                         <rect key="frame" x="100" y="261" width="114.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" name="SubTextColor"/>
+                                        <color key="textColor" name="MainTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.75" contentMode="scaleToFill" text="٣ قطع ..." textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="9R5-LB-uVE">
@@ -1107,7 +1087,11 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCo-68-tNz">
-                                        <rect key="frame" x="107" y="637" width="100" height="31"/>
+                                        <rect key="frame" x="82" y="637" width="150" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="KBQ-ta-hYp"/>
+                                            <constraint firstAttribute="height" constant="31" id="PlF-jD-KiL"/>
+                                        </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="حجز المساحة" cornerStyle="capsule">
                                             <color key="baseForegroundColor" name="MainTextColor"/>
@@ -1195,7 +1179,7 @@
             <color red="0.91399997472763062" green="0.94099998474121094" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="mainColor">
-            <color red="0.48235297199999999" green="0.5411764979" blue="0.63921570780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.48199999332427979" green="0.54100000858306885" blue="0.63899999856948853" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
