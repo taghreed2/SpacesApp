@@ -9,5 +9,7 @@ This application acts as a platform that connects a host who has extra space at 
 
 # Credits
 Back-end: Firebase
+
 Icons: icons8
+
 App icon: App Icon Generator
