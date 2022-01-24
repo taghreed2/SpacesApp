@@ -45,6 +45,10 @@ class NewSpaceVC: UIViewController, CLLocationManagerDelegate {
         
     }
    
+    @IBAction func dismis(_ sender: Any) {
+        
+       dismiss(animated: true)
+    }
     // MARK: Functons
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

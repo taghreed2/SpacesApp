@@ -23,6 +23,7 @@ extension HostProfileVC: UITableViewDelegate,UITableViewDataSource {
         cell.customerName.text = RentedSpaceArr[indexPath.row].customerName
         cell.customerNum.text = RentedSpaceArr[indexPath.row].customerNum
         cell.state.text = RentedSpaceArr[indexPath.row].state
+        roundCorners2(view: cell.contentView)
         return cell
         
     }
@@ -57,6 +58,7 @@ extension CustomerProfileVC : UITableViewDelegate ,UITableViewDataSource{
         cell.hostName.text = customerRequestsArr[indexPath.row].hostName
         cell.hostNum.text = customerRequestsArr[indexPath.row].hostNum
         cell.state.text = customerRequestsArr[indexPath.row].state
+        roundCorners2(view: cell.contentView)
         return cell
     }
     

@@ -38,6 +38,9 @@ class NewRequestVC: UIViewController {
     @IBAction func newRec(_ sender: Any) {
         addNewRequestData()
     }
+    @IBAction func dismis(_ sender: Any) {
+        dismiss(animated: true)
+    }
     
     //MARK: @IBAction
     
